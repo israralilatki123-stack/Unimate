@@ -1,0 +1,439 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated UniMate student profile stored under users/{uid}. Never stores passwords.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string" },
+        "university": { "type": "string" },
+        "department": { "type": "string" },
+        "semester": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "profileImage": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "fullName", "email", "university", "department", "semester", "createdAt", "updatedAt"]
+    },
+    "AcademicTask": {
+      "title": "AcademicTask",
+      "description": "Student assignment, quiz, or exam tracked under users/{uid}/tasks/{taskId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "courseName": { "type": "string" },
+        "category": { "type": "string" },
+        "dueDateText": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "title", "courseName", "category", "dueDateText", "completed", "createdAt", "updatedAt"]
+    },
+    "StudentCourse": {
+      "title": "StudentCourse",
+      "description": "Enrolled university course with credit hours, instructor, semester, classroom, schedule, and attendance counters under users/{uid}/courses/{courseId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "courseCode": { "type": "string" },
+        "courseName": { "type": "string" },
+        "creditHours": { "type": "number" },
+        "instructor": { "type": "string" },
+        "semester": { "type": "string" },
+        "description": { "type": "string" },
+        "classroom": { "type": "string" },
+        "schedule": { "type": "string" },
+        "attendedClasses": { "type": "integer" },
+        "totalClasses": { "type": "integer" },
+        "colorIndex": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "courseCode", "courseName", "creditHours", "instructor",
+        "semester", "description", "classroom", "schedule",
+        "attendedClasses", "totalClasses", "colorIndex", "createdAt", "updatedAt"
+      ]
+    },
+    "TimetableClass": {
+      "title": "TimetableClass",
+      "description": "Scheduled class slot (Monday-Sunday) with start/end times and subject color under users/{uid}/timetable/{classId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "dayOfWeek": { "type": "string" },
+        "subjectName": { "type": "string" },
+        "courseCode": { "type": "string" },
+        "instructor": { "type": "string" },
+        "classroom": { "type": "string" },
+        "startTimeMinutes": { "type": "integer" },
+        "endTimeMinutes": { "type": "integer" },
+        "colorIndex": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "dayOfWeek", "subjectName", "courseCode", "instructor",
+        "classroom", "startTimeMinutes", "endTimeMinutes", "colorIndex",
+        "createdAt", "updatedAt"
+      ]
+    },
+    "StudyNote": {
+      "title": "StudyNote",
+      "description": "Rich student study note with subject organization, pin/favorite flags, timestamps, and SAF/link attachments under users/{uid}/notes/{noteId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "courseName": { "type": "string" },
+        "content": { "type": "string" },
+        "pinned": { "type": "boolean" },
+        "favorite": { "type": "boolean" },
+        "attachments": { "type": "array" },
+        "clientUpdatedAtMillis": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "title", "courseName", "content", "createdAt", "updatedAt"]
+    },
+    "StudentReminder": {
+      "title": "StudentReminder",
+      "description": "Personal study or deadline reminder under users/{uid}/reminders/{reminderId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "remindAtText": { "type": "string" },
+        "done": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "title", "remindAtText", "done", "createdAt", "updatedAt"]
+    },
+    "StudyGoal": {
+      "title": "StudyGoal",
+      "description": "Student study goal progress under users/{uid}/goals/{goalId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "completedSteps": { "type": "integer" },
+        "targetSteps": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "title", "completedSteps", "targetSteps", "createdAt", "updatedAt"]
+    },
+    "StudentAssignment": {
+      "title": "StudentAssignment",
+      "description": "University assignment with description, course, deadline timestamp, priority, status, and attachments under users/{uid}/assignments/{assignmentId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "courseName": { "type": "string" },
+        "deadlineMillis": { "type": "integer" },
+        "priority": { "type": "string" },
+        "status": { "type": "string" },
+        "attachments": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "title", "description", "courseName", "deadlineMillis",
+        "priority", "status", "attachments", "createdAt", "updatedAt"
+      ]
+    },
+    "StudentQuiz": {
+      "title": "StudentQuiz",
+      "description": "University quiz with schedule timestamp, marks tracking, and preparation status under users/{uid}/quizzes/{quizId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "courseName": { "type": "string" },
+        "scheduledAtMillis": { "type": "integer" },
+        "totalMarks": { "type": "number" },
+        "obtainedMarks": { "type": "number" },
+        "scoreRecorded": { "type": "boolean" },
+        "preparationStatus": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "title", "courseName", "scheduledAtMillis",
+        "totalMarks", "obtainedMarks", "scoreRecorded",
+        "preparationStatus", "notes", "createdAt", "updatedAt"
+      ]
+    },
+    "StudentExam": {
+      "title": "StudentExam",
+      "description": "Midterm or final exam with exam timestamp, room, preparation status, and revision checklist under users/{uid}/exams/{examId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "examType": { "type": "string" },
+        "courseName": { "type": "string" },
+        "examAtMillis": { "type": "integer" },
+        "room": { "type": "string" },
+        "preparationStatus": { "type": "string" },
+        "revisionChecklist": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "title", "examType", "courseName", "examAtMillis",
+        "room", "preparationStatus", "revisionChecklist",
+        "createdAt", "updatedAt"
+      ]
+    },
+    "CalendarEvent": {
+      "title": "CalendarEvent",
+      "description": "University calendar event with category, date/time bounds, and location/course under users/{uid}/calendarEvents/{eventId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "locationOrCourse": { "type": "string" },
+        "startAtMillis": { "type": "integer" },
+        "endAtMillis": { "type": "integer" },
+        "allDay": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "title", "description", "category", "locationOrCourse",
+        "startAtMillis", "endAtMillis", "allDay", "createdAt", "updatedAt"
+      ]
+    },
+    "ScheduledReminder": {
+      "title": "ScheduledReminder",
+      "description": "Categorized academic or study reminder scheduled locally with WorkManager under users/{uid}/scheduledReminders/{reminderId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "notes": { "type": "string" },
+        "category": { "type": "string" },
+        "triggerAtMillis": { "type": "integer" },
+        "leadMinutes": { "type": "integer" },
+        "enabled": { "type": "boolean" },
+        "completed": { "type": "boolean" },
+        "workRequestId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "title", "notes", "category", "triggerAtMillis", "leadMinutes",
+        "enabled", "completed", "workRequestId", "createdAt", "updatedAt"
+      ]
+    },
+    "AppNotification": {
+      "title": "AppNotification",
+      "description": "In-app notification record tracking unread/read status under users/{uid}/notifications/{notificationId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+        "category": { "type": "string" },
+        "sourceType": { "type": "string" },
+        "sourceId": { "type": "string" },
+        "deliveredAtMillis": { "type": "integer" },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "title", "body", "category", "sourceType", "sourceId",
+        "deliveredAtMillis", "read", "createdAt", "updatedAt"
+      ]
+    },
+    "AttendanceLog": {
+      "title": "AttendanceLog",
+      "description": "Dated attendance session log per course with status and monthly grouping key under users/{uid}/attendanceLogs/{logId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "courseId": { "type": "string" },
+        "courseCode": { "type": "string" },
+        "courseName": { "type": "string" },
+        "status": { "type": "string" },
+        "sessionDateMillis": { "type": "integer" },
+        "monthKey": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "courseId", "courseCode", "courseName", "status",
+        "sessionDateMillis", "monthKey", "notes", "createdAt", "updatedAt"
+      ]
+    },
+    "AcademicSettings": {
+      "title": "AcademicSettings",
+      "description": "User-configurable attendance threshold and customizable grading scale under users/{uid}/academicSettings/{settingId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "attendanceThresholdPercent": { "type": "integer" },
+        "scaleName": { "type": "string" },
+        "customScale": { "type": "boolean" },
+        "gradingScale": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "attendanceThresholdPercent", "scaleName", "customScale",
+        "gradingScale", "createdAt", "updatedAt"
+      ]
+    },
+    "SemesterGpaRecord": {
+      "title": "SemesterGpaRecord",
+      "description": "Semester GPA record (current or previous semester) supporting course-level breakdown or summary override under users/{uid}/semesterGpaRecords/{recordId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "semesterName": { "type": "string" },
+        "orderIndex": { "type": "integer" },
+        "activeSemester": { "type": "boolean" },
+        "entryMode": { "type": "string" },
+        "summaryCredits": { "type": "number" },
+        "summaryGpa": { "type": "number" },
+        "courses": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "semesterName", "orderIndex", "activeSemester", "entryMode",
+        "summaryCredits", "summaryGpa", "courses", "createdAt", "updatedAt"
+      ]
+    },
+    "StudySession": {
+      "title": "StudySession",
+      "description": "Subject-wise planned, Pomodoro, or manual study session under users/{uid}/studySessions/{sessionId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "durationMinutes": { "type": "integer" },
+        "sessionMode": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "scheduledAtMillis": { "type": "integer" },
+        "completedAtMillis": { "type": "integer" },
+        "studyDateKey": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "title", "subject", "durationMinutes", "sessionMode",
+        "completed", "scheduledAtMillis", "completedAtMillis", "studyDateKey",
+        "notes", "createdAt", "updatedAt"
+      ]
+    },
+    "StudyPlannerSettings": {
+      "title": "StudyPlannerSettings",
+      "description": "Daily and weekly study goals and Pomodoro timer defaults under users/{uid}/studyPlannerSettings/{settingId}.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "dailyGoalMinutes": { "type": "integer" },
+        "weeklyGoalMinutes": { "type": "integer" },
+        "pomodoroFocusMinutes": { "type": "integer" },
+        "pomodoroBreakMinutes": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "uid", "dailyGoalMinutes", "weeklyGoalMinutes",
+        "pomodoroFocusMinutes", "pomodoroBreakMinutes", "createdAt", "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Private per-user student profile document owned strictly by request.auth.uid."
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": { "$ref": "#/entities/AcademicTask" },
+      "description": "Owner-isolated academic tasks, quizzes, and exams."
+    },
+    "/users/{userId}/courses/{courseId}": {
+      "schema": { "$ref": "#/entities/StudentCourse" },
+      "description": "Owner-isolated enrolled courses with full academic metadata and attendance records."
+    },
+    "/users/{userId}/timetable/{classId}": {
+      "schema": { "$ref": "#/entities/TimetableClass" },
+      "description": "Owner-isolated daily/weekly timetable classes (Monday-Sunday)."
+    },
+    "/users/{userId}/assignments/{assignmentId}": {
+      "schema": { "$ref": "#/entities/StudentAssignment" },
+      "description": "Owner-isolated university assignments with deadlines, priorities, statuses, and attachments."
+    },
+    "/users/{userId}/quizzes/{quizId}": {
+      "schema": { "$ref": "#/entities/StudentQuiz" },
+      "description": "Owner-isolated university quizzes with marks, preparation status, and quiz history."
+    },
+    "/users/{userId}/exams/{examId}": {
+      "schema": { "$ref": "#/entities/StudentExam" },
+      "description": "Owner-isolated midterm and final exams with countdown, room, and revision checklists."
+    },
+    "/users/{userId}/calendarEvents/{eventId}": {
+      "schema": { "$ref": "#/entities/CalendarEvent" },
+      "description": "Owner-isolated calendar events across academic, holiday, university, and personal categories."
+    },
+    "/users/{userId}/scheduledReminders/{reminderId}": {
+      "schema": { "$ref": "#/entities/ScheduledReminder" },
+      "description": "Owner-isolated categorized reminders synced with WorkManager local scheduling."
+    },
+    "/users/{userId}/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/AppNotification" },
+      "description": "Owner-isolated unread and read notification inbox."
+    },
+    "/users/{userId}/attendanceLogs/{logId}": {
+      "schema": { "$ref": "#/entities/AttendanceLog" },
+      "description": "Owner-isolated dated attendance session logs per course."
+    },
+    "/users/{userId}/academicSettings/{settingId}": {
+      "schema": { "$ref": "#/entities/AcademicSettings" },
+      "description": "Owner-isolated configurable attendance threshold and grading scale preferences."
+    },
+    "/users/{userId}/semesterGpaRecords/{recordId}": {
+      "schema": { "$ref": "#/entities/SemesterGpaRecord" },
+      "description": "Owner-isolated current and previous semester GPA/CGPA records."
+    },
+    "/users/{userId}/notes/{noteId}": {
+      "schema": { "$ref": "#/entities/StudyNote" },
+      "description": "Owner-isolated study notes."
+    },
+    "/users/{userId}/reminders/{reminderId}": {
+      "schema": { "$ref": "#/entities/StudentReminder" },
+      "description": "Owner-isolated deadline reminders."
+    },
+    "/users/{userId}/goals/{goalId}": {
+      "schema": { "$ref": "#/entities/StudyGoal" },
+      "description": "Owner-isolated study goals."
+    },
+    "/users/{userId}/studySessions/{sessionId}": {
+      "schema": { "$ref": "#/entities/StudySession" },
+      "description": "Owner-isolated planned and completed Pomodoro/subject study sessions."
+    },
+    "/users/{userId}/studyPlannerSettings/{settingId}": {
+      "schema": { "$ref": "#/entities/StudyPlannerSettings" },
+      "description": "Owner-isolated daily/weekly study goals and Pomodoro timer settings."
+    }
+  }
+}

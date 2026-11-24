@@ -1,0 +1,190 @@
+<resources>
+    <string name="app_name">UniMate</string>
+    <string name="app_tagline">Your University. Your World.</string>
+    <string name="cd_unimate_logo">UniMate official logo</string>
+    <string name="cd_navigate_back">Navigate back</string>
+    <string name="cd_profile_avatar">Student profile photo</string>
+
+    <!-- Splash -->
+    <string name="splash_loading_label">Preparing your campus workspace…</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_back">Back</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get Started</string>
+
+    <string name="onboarding_step_1_badge">Academic Hub</string>
+    <string name="onboarding_step_1_title">Manage Your University Life.</string>
+    <string name="onboarding_step_1_subtitle">Keep your weekly timetable, enrolled courses, attendance records, and lecture notes organized in one smart workspace.</string>
+    <string name="cd_onboarding_1">Illustration showing organized university courses, timetable, and study notebook</string>
+
+    <string name="onboarding_step_2_badge">Deadlines &amp; Alerts</string>
+    <string name="onboarding_step_2_title">Stay Ahead of Every Deadline.</string>
+    <string name="onboarding_step_2_subtitle">Track assignments, quizzes, and exam dates with an integrated academic calendar and timely smart reminders.</string>
+    <string name="cd_onboarding_2">Illustration showing academic calendar, task checklist, timer, and reminder bell</string>
+
+    <string name="onboarding_step_3_badge">Insights &amp; AI</string>
+    <string name="onboarding_step_3_title">Learn, Plan and Grow with UniMate.</string>
+    <string name="onboarding_step_3_subtitle">Monitor your GPA/CGPA, balance student expenses, and accelerate your learning with your built-in AI study assistant.</string>
+    <string name="cd_onboarding_3">Illustration showing rising academic progress chart, study notes, and AI assistant orb</string>
+
+    <!-- Profile Field Labels & Validation -->
+    <string name="auth_label_full_name">Full Name</string>
+    <string name="auth_hint_full_name">e.g. Aisha Khan</string>
+    <string name="auth_label_email">Email Address</string>
+    <string name="auth_hint_email">student@gmail.com</string>
+    <string name="auth_label_phone">Phone Number (with country code)</string>
+    <string name="auth_hint_phone">+923001234567</string>
+    <string name="auth_label_otp">6-Digit SMS Verification Code</string>
+    <string name="auth_hint_otp">Enter 6-digit code</string>
+    <string name="auth_label_university">University</string>
+    <string name="auth_hint_university">e.g. Sukkur IBA University</string>
+    <string name="auth_label_department">Department</string>
+    <string name="auth_hint_department">e.g. Computer Science</string>
+    <string name="auth_label_semester">Semester</string>
+    <string name="auth_hint_semester">Select your current semester</string>
+    <string name="profile_label_image_url">Profile Photo URL (Optional)</string>
+    <string name="profile_hint_image_url">https://…</string>
+
+    <string name="auth_error_full_name_required">Please enter your full name (2 to 100 characters).</string>
+    <string name="auth_error_email_required">Please enter your email address.</string>
+    <string name="auth_error_email_invalid">Please enter a valid email address.</string>
+    <string name="auth_error_phone_invalid">Enter a valid international number starting with + (e.g. +923001234567).</string>
+    <string name="auth_error_otp_invalid">Please enter the 6-digit SMS code.</string>
+    <string name="auth_error_university_required">Please enter your university name (2 to 150 characters).</string>
+    <string name="auth_error_department_required">Please enter your department (2 to 120 characters).</string>
+    <string name="auth_error_semester_required">Please select your current semester.</string>
+    <string name="profile_error_image_url_invalid">Please enter a valid http(s) URL under 500 characters.</string>
+
+    <!-- Login Screen (Dual Verification: Gmail/Google + Phone OTP) -->
+    <string name="login_badge">Gmail &amp; Phone Auth</string>
+    <string name="login_title">Verify &amp; Sign In</string>
+    <string name="login_subtitle">Verify with your Gmail account or your Phone Number to unlock your synced UniMate workspace.</string>
+    <string name="login_remember_session">Automatically restore session on launch</string>
+    <string name="login_cta_google">Verify with Gmail (Google)</string>
+    <string name="login_signing_in">Connecting to Google…</string>
+    <string name="login_divider_or_phone">OR VERIFY WITH PHONE NUMBER</string>
+    <string name="login_cta_send_otp">Send SMS Verification Code</string>
+    <string name="login_sending_otp">Sending SMS code…</string>
+    <string name="login_cta_verify_otp">Verify Code &amp; Sign In</string>
+    <string name="login_verifying_otp">Verifying OTP…</string>
+    <string name="login_cta_resend_otp">Resend Code</string>
+    <string name="login_cta_resend_countdown">Resend in %1$ds</string>
+    <string name="login_cta_change_phone">Change Number</string>
+    <string name="login_otp_sent_info">A 6-digit verification code was sent to %1$s.</string>
+
+    <!-- Complete Student Profile Screen -->
+    <string name="profile_setup_badge">Step 1 of 1</string>
+    <string name="profile_setup_title">Complete Student Profile</string>
+    <string name="profile_setup_subtitle">Add your academic details so UniMate can personalize your workspace in Cloud Firestore.</string>
+    <string name="profile_setup_cta_save">Save &amp; Continue</string>
+    <string name="profile_setup_saving">Saving to Cloud Firestore…</string>
+    <string name="profile_setup_switch_account">Switch Account</string>
+
+    <!-- Dashboard & Profile Management -->
+    <string name="dashboard_destination_title">UniMate Dashboard</string>
+    <string name="dashboard_status_badge">Cloud Firestore Synced</string>
+    <string name="dashboard_badge_gmail_verified">Gmail Verified</string>
+    <string name="dashboard_badge_phone_verified">Phone Verified</string>
+    <string name="dashboard_verify_phone_cta">Verify Phone Number</string>
+    <string name="dashboard_link_phone_title">Verify Phone Number (OTP)</string>
+    <string name="dashboard_link_phone_subtitle">Link a verified phone number to your UniMate account and Firestore profile.</string>
+    <string name="dashboard_phone_linked_success">Phone number verified and synced with Cloud Firestore.</string>
+    <string name="dashboard_edit_profile">Edit Profile</string>
+    <string name="dashboard_sign_out">Sign Out</string>
+    <string name="dashboard_signing_out">Signing out…</string>
+    <string name="dashboard_save_changes">Save Changes</string>
+    <string name="dashboard_cancel">Cancel</string>
+    <string name="dashboard_edit_profile_title">Update Academic Profile</string>
+    <string name="dashboard_profile_updated">Profile synced with Cloud Firestore.</string>
+    <string name="dashboard_loading_profile">Loading your student profile…</string>
+    <string name="dashboard_error_title">Could not load your profile</string>
+    <string name="dashboard_modules_heading">Academic Workspace</string>
+    <string name="dashboard_modules_subheading">Your dual-verified student profile and cloud security rules are live. Upcoming UniMate modules plug right into this session.</string>
+
+    <!-- Bottom Navigation / Adaptive Rail -->
+    <string name="nav_home">Home</string>
+    <string name="nav_planner">Planner</string>
+    <string name="nav_tasks">Tasks</string>
+    <string name="nav_academics">Academics</string>
+    <string name="nav_ai">AI Assistant</string>
+
+    <!-- Main Dashboard Sections -->
+    <string name="cd_notifications_bell">View notifications and reminders</string>
+    <string name="cd_open_profile_menu">Open student profile</string>
+    <string name="dashboard_demo_badge">DEMO</string>
+    <string name="dashboard_demo_banner_title">Sample Demo Workspace Active</string>
+    <string name="dashboard_demo_banner_subtitle">These sample classes, tasks, and goals illustrate the layout until you add your own records to Cloud Firestore.</string>
+    <string name="dashboard_demo_hide">Hide Demo</string>
+    <string name="dashboard_demo_show">Preview Demo Data</string>
+
+    <string name="dashboard_section_stats">Academic Statistics</string>
+    <string name="dashboard_section_quick_actions">Quick Actions</string>
+    <string name="dashboard_section_todays_classes">Today\'s Classes</string>
+    <string name="dashboard_section_pending_assignments">Pending Assignments</string>
+    <string name="dashboard_section_upcoming_assessments">Upcoming Quizzes &amp; Exams</string>
+    <string name="dashboard_section_attendance">Attendance Progress</string>
+    <string name="dashboard_section_study_goals">Study Goals</string>
+
+    <!-- Quick Actions -->
+    <string name="qa_add_assignment">Add Assignment</string>
+    <string name="qa_create_note">Create Note</string>
+    <string name="qa_open_timetable">Open Timetable</string>
+    <string name="qa_calculate_gpa">Calculate GPA</string>
+    <string name="qa_add_reminder">Add Reminder</string>
+    <string name="qa_open_ai">Open AI Assistant</string>
+
+    <!-- AI Promo Card & Assistant -->
+    <string name="ai_promo_badge">UniMate AI</string>
+    <string name="ai_promo_title">Study Smarter with UniMate AI</string>
+    <string name="ai_promo_subtitle">Generate study plans, break down tough lecture topics, and prepare for upcoming quizzes and exams.</string>
+    <string name="ai_promo_cta">Launch AI Assistant</string>
+    <string name="ai_screen_title">UniMate AI Study Assistant</string>
+    <string name="ai_screen_subtitle">Powered by Firebase AI Logic • Ask anything about your coursework</string>
+    <string name="ai_input_placeholder">Ask about an assignment, concept, or study plan…</string>
+    <string name="cd_ai_send">Send message to AI Assistant</string>
+
+    <!-- Notifications & Dialogs -->
+    <string name="notifications_title">Alerts &amp; Reminders</string>
+    <string name="notifications_empty">No active alerts or upcoming reminders.</string>
+    <string name="gpa_title">GPA Calculator</string>
+    <string name="gpa_subtitle">Add courses with credit hours and expected grades to compute your weighted semester GPA.</string>
+    <string name="dialog_close">Close</string>
+
+    <!-- Offline Mode & Synchronization -->
+    <string name="ai_offline_banner_message">You are offline. UniMate AI needs an internet connection — your draft input is kept safe.</string>
+    <string name="sync_banner_offline_title">Offline Mode</string>
+    <string name="sync_banner_offline_pending">%1$d pending change(s) queued locally</string>
+    <string name="sync_banner_offline_cached">Showing cached workspace • Edits sync automatically when online</string>
+    <string name="sync_banner_syncing_title">Syncing changes to Cloud Firestore…</string>
+    <string name="sync_banner_conflict_title">%1$d sync conflict(s) need review</string>
+    <string name="sync_banner_pending_online">%1$d local change(s) waiting to sync</string>
+    <string name="sync_banner_error_title">Sync paused — tap Retry or Details</string>
+    <string name="sync_banner_just_synced">All pending changes synced with Cloud Firestore</string>
+    <string name="sync_action_details">Details</string>
+    <string name="sync_action_resolve">Resolve</string>
+    <string name="sync_action_retry">Retry</string>
+    <string name="sync_action_sync_now">Sync Now</string>
+    <string name="cd_sync_status_icon">Synchronization status</string>
+    <string name="cd_dismiss_sync_banner">Dismiss sync confirmation</string>
+    <string name="sync_details_title">Offline &amp; Sync Status</string>
+    <string name="sync_status_online">Connected (Online)</string>
+    <string name="sync_status_offline">Disconnected (Offline)</string>
+    <string name="sync_cache_status_label">Firestore Persistent Cache</string>
+    <string name="sync_cache_status_active">Enabled locally</string>
+    <string name="sync_last_synced_label">Last Cloud Sync</string>
+    <string name="sync_never_synced">Waiting for first sync</string>
+    <string name="sync_pending_queue_header">Pending Offline Changes (%1$d)</string>
+    <string name="sync_pending_queue_empty">No pending offline edits. Everything is up to date.</string>
+    <string name="sync_conflicts_header">Sync Conflicts (%1$d)</string>
+    <string name="sync_conflict_keep_mine">Keep Mine</string>
+    <string name="sync_conflict_use_cloud">Use Cloud</string>
+    <string name="sync_conflict_keep_both">Save Both</string>
+    <string name="sync_signout_warning_title">Unsynchronized Changes Detected</string>
+    <string name="sync_signout_warning_body">You have %1$d pending change(s) and %2$d unresolved conflict(s) that have not finished syncing to Cloud Firestore. Signing out now could leave them unuploaded on this device.</string>
+    <string name="sync_signout_sync_and_exit">Sync Now &amp; Sign Out</string>
+    <string name="sync_signout_syncing">Syncing changes…</string>
+    <string name="sync_signout_stay">Stay Signed In</string>
+    <string name="sync_signout_anyway">Sign Out Anyway</string>
+</resources>
